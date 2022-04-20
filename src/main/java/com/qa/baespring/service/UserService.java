@@ -40,4 +40,11 @@ public class UserService {
 		existing.setUsername(user.getUsername()); // Change EXISTING user's username to new user's username.
 		return repo.saveAndFlush(existing);
 	}
+
+	// Delete a user
+	public boolean delete(long id) {
+		repo.deleteById(id);
+		return !repo.existsById(id);
+	}
+	
 }
