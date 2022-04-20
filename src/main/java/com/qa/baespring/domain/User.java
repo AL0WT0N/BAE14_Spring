@@ -7,24 +7,30 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
+//@Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "firstName", "lastName", "username" }) })
 public class User {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id // This makes the column a Primary Key
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // This makes this column auto-increment
 	private long id;
 	
 	// Creates a column called "firstname"
-	@Column(name = "firstname")
+	// This column CAN NOT be null
+	@Column(name = "firstname", nullable = false)
 	private String firstName;
 	
 	// Creates a column called "last_name"
+	// This column CAN NOT be null
+	@Column(nullable = false)
 	private String lastName;
 	
 	// Creates a column called "username"
-	// This column CAN NOT be null
-	@Column(nullable = false)
+	// username MUST be unique (no duplicates)
+	@Column(unique = true, nullable = false)
 	private String username;
 	
 	// Default Constructor
