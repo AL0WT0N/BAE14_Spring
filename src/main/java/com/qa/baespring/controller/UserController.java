@@ -23,14 +23,14 @@ public class UserController {
 	}
 
 	// Get by ID (get one User)
-	@GetMapping("/getById/{id}") // localhost:8080/getById/id
-	public User getById(@PathVariable long id) {
-		return service.getById(id);
+	@GetMapping("/getById/{id}")
+	public ResponseEntity<User> getById(@PathVariable long id) {
+		return new ResponseEntity<User>(service.getById(id), HttpStatus.OK);
 	}
 	
-	@GetMapping("/getAll") // localhost:8080/getAll
-	public List<User> getAll() {
-		return service.getAll();
+	@GetMapping("/getAll")
+	public ResponseEntity<List<User>> getAll() {
+		return new ResponseEntity<List<User>>(service.getAll(), HttpStatus.OK);
 	}
 	
 	// Post
@@ -41,13 +41,24 @@ public class UserController {
 	
 	// Put
 	@PutMapping("/update/{id}") // localhost:8080/update/id
-	public User update(@PathVariable long id, @RequestBody User user) {
-		return service.update(id, user);
+	public ResponseEntity<User> update(@PathVariable long id, @RequestBody User user) {
+		return new ResponseEntity<User>(service.update(id, user), HttpStatus.ACCEPTED);
 	}
 	
 	// Delete
 	@DeleteMapping("/delete/{id}") //localhost:8080/delete/id
-	public boolean delete(@PathVariable long id) {
-		return service.delete(id);
+	public ResponseEntity<?> delete(@PathVariable long id) {
+		return (service.delete(id))? new ResponseEntity<>(HttpStatus.NO_CONTENT) : 
+			new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
+
+	// Delete without Ternary If
+//	@DeleteMapping("/delete/{id}") //localhost:8080/delete/id
+//	public ResponseEntity<?> delete(@PathVariable long id) {
+//		if (service.delete(id) == true) {
+//			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//		} else {
+//			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+//		}	
+//	}
 }
