@@ -17,14 +17,20 @@ public class UserService {
 		this.repo = repo;
 	}
 	
-	// Get By ID (get one User)
-	public User getById(long id) {
-		return repo.findById(id).get(); //.get() will either get the User (if exists) OR throw NoSuchElementException
-	}
 	
 	// Get ALL users
 	public List<User> getAll() {
 		return repo.findAll();
+	}
+	
+	// Get By ID (get one User)
+	public User getById(long id) {
+		return repo.findById(id).get(); //.get() will either get the User (if exists) OR throw NoSuchElementException
+	}
+
+	// Get By Username (get one User)
+	public User getByUsername(String username) {
+		return repo.findByUsername(username).get();
 	}
 	
 	// Create a new user

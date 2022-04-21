@@ -22,15 +22,21 @@ public class UserController {
 		this.service = service;
 	}
 
+	@GetMapping("/getAll")
+	public ResponseEntity<List<User>> getAll() {
+		return new ResponseEntity<List<User>>(service.getAll(), HttpStatus.OK);
+	}
+	
 	// Get by ID (get one User)
 	@GetMapping("/getById/{id}")
 	public ResponseEntity<User> getById(@PathVariable long id) {
 		return new ResponseEntity<User>(service.getById(id), HttpStatus.OK);
 	}
 	
-	@GetMapping("/getAll")
-	public ResponseEntity<List<User>> getAll() {
-		return new ResponseEntity<List<User>>(service.getAll(), HttpStatus.OK);
+	// Get by Username (get one User)
+	@GetMapping("/getByUsername/{username}")
+	public ResponseEntity<User> getByUsername(@PathVariable String username) {
+		return new ResponseEntity<User>(service.getByUsername(username), HttpStatus.OK);
 	}
 	
 	// Post
