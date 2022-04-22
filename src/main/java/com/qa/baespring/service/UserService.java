@@ -3,6 +3,7 @@ package com.qa.baespring.service;
 import java.util.List;
 import org.springframework.stereotype.Service;
 import com.qa.baespring.domain.User;
+import com.qa.baespring.exceptions.UserNotFoundException;
 import com.qa.baespring.exceptions.UserNotFoundExceptionWithID;
 import com.qa.baespring.repo.UserRepo;
 
@@ -21,11 +22,20 @@ public class UserService {
 		return repo.findAll();
 	}
 	
-	// Get By ID (get one User)
+	// Get By ID (get one User) 
+	// This could also have: throws UserNotFoundException in the signature, to throw this exception up to Controller.
 	public User getById(long id) {
 //		return repo.findById(id).get(); //.get() will either get the User (if exists) OR throw NoSuchElementException
-		return repo.findById(id).orElseThrow(() -> new UserNotFoundExceptionWithID(id));
-//		return repo.findById(id).orElseThrow(UserNotFoundException::new);
+//		return repo.findById(id).orElseThrow(() -> new UserNotFoundExceptionWithID(id));
+		return repo.findById(id).orElseThrow(UserNotFoundException::new);
+
+// Exception handling example for handling the exeception here.
+//		try {
+//			return repo.findById(id).orElseThrow(UserNotFoundException::new);
+//		} catch (UserNotFoundException e){
+//			System.out.println(e.getMessage());
+//			return null;
+//		}
 	}
 
 	// Get By Username (get one User)

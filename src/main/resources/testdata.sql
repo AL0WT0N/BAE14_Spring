@@ -1,0 +1,1 @@
+INSERT INTO `user` (`firstname`, `last_name`, `username`) VALUES ('Tom', 'Jones', 'tjones1');

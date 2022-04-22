@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.qa.baespring.domain.User;
+import com.qa.baespring.exceptions.UserNotFoundException;
 import com.qa.baespring.service.UserService;
 
 @RestController
@@ -22,7 +23,7 @@ public class UserController {
 
 	private UserService service;
 	
-	public UserController(UserService service) {
+	public UserController(UserService service) { 
 		this.service = service;
 	}
 
@@ -35,6 +36,14 @@ public class UserController {
 	@GetMapping("/getById/{id}")
 	public ResponseEntity<User> getById(@PathVariable long id) {
 		return new ResponseEntity<User>(service.getById(id), HttpStatus.OK);
+		
+// Exception handling example (if getById() throws the exception here)
+//		try {
+//			return new ResponseEntity<User>(service.getById(id), HttpStatus.OK);
+//		} catch (UserNotFoundException e) {
+//			System.out.println(e.getMessage());
+//			return null;
+//		}
 	}
 	
 	// Get by Username (get one User)
