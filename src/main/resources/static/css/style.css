@@ -1,0 +1,241 @@
+html {height: 100%}
+
+body {background-image:linear-gradient(#f8f9fa, #004050)}
+
+footer {
+    background-color: #0f4b5a;
+    color: #f8f9fa;
+    font-weight: 300;
+    padding-top:0 !important;
+    position:absolute;
+    bottom:0;
+    width: 100%;
+}
+.navbar {
+    font-weight: 400;
+}
+.nav-link.active {
+    font-weight: bold;
+    color: #0f4b5a !important;
+}
+
+.nav-link {
+    transition:color .35s ease-in-out,background-color .35s ease-in-out,border-color .35s1 ease-in-out !important;
+}
+
+.nav-link:hover {
+    color: #0f4b5a !important;
+
+}
+
+.b-example-divider {
+    height: 3rem;
+    background-color: rgba(0, 0, 0, .1);
+    border: solid rgba(0, 0, 0, .15);
+    border-width: 1px 0;
+    box-shadow: inset 0 0.5em 1.5em rgb(0 0 0 / 10%), inset 0 0.125em 0.5em rgb(0 0 0 / 15%);
+}
+
+#footerDivider {
+    height: 3rem;
+}
+
+#fText {
+    height: 4em;
+    text-align:center;
+    padding-top: 1em;
+}
+
+#form-div {
+    background-color: rgba(0, 0, 0, .1);
+    border: solid rgba(0, 0, 0, .15);
+    border-width: 1px 0;
+    border-radius:1em;;
+    box-shadow: inset 0 0.5em 1.5em rgb(0 0 0 / 10%), inset 0 0.125em 0.5em rgb(0 0 0 / 15%);
+    width: 13em;
+    margin-top: 2em;
+    padding:0.5em;
+    display:inline-block;
+}
+
+#results-div {
+    background-color: rgba(0, 0, 0, .1);
+    border: solid rgba(0, 0, 0, .15);
+    border-width: 1px 0;
+    border-radius: 1em;
+    box-shadow: inset 0 0.5em 1.5em rgb(0 0 0 / 10%), inset 0 0.125em 0.5em rgb(0 0 0 / 15%);
+    margin-top: 2em;
+    margin-left: 2em;
+    padding: 0.5em;
+    width: 60vw;
+    display: inline-block;
+    position: absolute;
+    overflow: auto;
+    max-height: 60vh;
+}
+
+#input-header {
+    text-align: center;
+}
+
+.main-block{
+    position:relative;
+    min-height: 50%;
+}
+
+.form-btns {
+    margin-top: 0.5em;
+    width: 48.86%;
+}
+
+.form-floating {
+    margin-top: 0.5em;
+}
+
+.form-control {
+    height: 2.5em !important;
+}
+
+.form-floating>label {
+    padding: 0.5rem .75rem !important;
+}
+
+.form-floating>.form-select {
+    height: 2.6em !important;
+    padding-top: 0.5em !important;
+}
+
+.alert {
+    border:none !important;
+    padding: 0.25rem !important;
+    margin-bottom: 0 !important;
+    margin-top: 0.5em !important;
+    text-align: center;
+}
+
+.alert-success {
+    color: #ffffff !important;
+    background-color: #5aaa5e !important;
+    border: none !important;
+}
+
+.alert-danger {
+    color: #ffffff !important;
+    background-color: #ce4f5b !important;
+    border: none !important;
+}
+
+#results-div::-webkit-scrollbar
+{
+	width: 10px;
+}
+
+#results-div::-webkit-scrollbar-thumb
+{
+	border-radius: 5em;
+	background-image: linear-gradient(#539aac, #004050);
+}
+
+.entry-div {
+    position: relative;
+    height: 2em;
+    padding-bottom: 2.5em;
+}
+
+.del-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.edit-btn {
+    position: absolute;
+    right: 4.5em;
+    top: 0;
+}
+
+.modal.fade .modal-dialog {
+    transition: transform .3s ease-out !important;
+    transform: translate(25%,-5%) !important;
+}
+
+.modal-content {
+    width:auto !important;
+    border-radius: 1em;
+}
+
+.modal-body {
+    padding-top: 0;
+    padding-bottom: 0.2em;
+}
+
+.modal-body #form-div {
+    margin-top: 0;
+}
+
+.modal-title {
+    padding-left: 27%
+}
+
+.modal-header {
+    padding: 0.2rem 1rem !important;
+}
+
+.modal-footer {
+    padding-top: 0 !important;
+    justify-content: center !important;
+}
+
+.entry-values {
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 6px;
+    height: 2em;
+    background-color: #386a76;
+    border-color: #ffffff00;
+    color: white;
+    text-align: center;
+    width:50vw;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #386a76;
+    border-color: #8fa3a9;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active {
+    color: #fff;
+    background-color: #294e57;
+    border-color: #8fa3a9;
+}
+
+.btn-danger {
+    color: #fff;
+    background-color: #bf4a56;
+    border-color: #90a4a9;
+}
+
+.btn-danger:hover, .btn-danger:focus, .btn-danger:active, .btn-danger.active {
+    color: #fff;
+    background-color: #9b2e39;
+    border-color: #90a4a9;
+}
+
+@media screen and (max-width: 1200px) {
+    .entry-values {
+        width: 48vw;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .entry-values {
+        width: 47vw;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .entry-values {
+        width: 43.5vw;
+    }
+}

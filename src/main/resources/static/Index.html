@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <!-- Boostrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <!-- Datepicket CSS -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
+        integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw=="
+        crossorigin="anonymous" />
+    <!-- My CSS -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body class="d-flex flex-column h-100" onload="getAll()">
+    <header>
+        <div class="container">
+            <nav class="navbar navbar-light">
+                <div class="container-fluid">
+                    <a class="navbar-brand">
+                        <img src="imgs/QA-logo-2019.png" alt="" width="40" height="40">
+                    </a>
+                    <div class="navbar-nav" style="flex-grow: 1">
+                        <a class="nav-link active px-3" aria-disabled="true">Spring Front End Example</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="b-example-divider"></div>
+    </header>
+    <div class="container main-block">
+        <div id="form-div">
+            <form name="createForm">
+                <div id="input-header">
+                    <h5>Add new user</h1>
+                </div>
+                <div class="form-floating">
+                    <input type="text" class="form-control fname-input" id="floatingInput" placeholder="First Name"
+                        autocomplete="off" name="fname">
+                    <label for="floatingInput">First Name</label>
+                </div>
+                <div class="form-floating">
+                    <input type="text" class="form-control lname-input" id="floatingInput" placeholder="Last Name"
+                        autocomplete="off" name="lname">
+                    <label for="floatingPassword">Last Name</label>
+                </div>
+                <div class="form-floating">
+                    <input type="text" class="form-control uname-input" id="floatingInput" placeholder="Username"
+                        autocomplete="off" name="username">
+                    <label for="floatingPassword">Username</label>
+                </div>
+                <div>
+                    <button id="create-btn" class="btn btn-sm btn-primary form-btns" type="button"
+                        onClick="create()">Create</button>
+                    <button id="reset-btn" class="btn btn-sm btn-danger form-btns" type="reset">Reset</button>
+                </div>
+            </form>
+        </div>
+        <div id="results-div"></div>
+
+        <!-- Button trigger modal -->
+        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#edit-modal">
+            Launch demo modal
+        </button> -->
+        
+        <!-- Modal -->
+        <div class="modal fade" id="edit-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="edit-modal-label">Edit Entry</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="form-div">
+                            <form name="editForm">
+                                <input type="hidden" name="entry-id">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control fname-input" id="floatingInput" placeholder="First Name"
+                                        autocomplete="off" name="fname">
+                                    <label for="floatingInput">First Name</label>
+                                </div>
+                                <div class="form-floating">
+                                    <input type="text" class="form-control lname-input" id="floatingInput" placeholder="Last Name"
+                                        autocomplete="off" name="lname">
+                                    <label for="floatingPassword">Last Name</label>
+                                </div>
+                                <div class="form-floating">
+                                    <input type="text" class="form-control uname-input" id="floatingInput" placeholder="Username"
+                                        autocomplete="off" name="username">
+                                    <label for="floatingPassword">Username</label>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" onClick="update()">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div id="footerDivider" class="b-example-divider"></div>
+        <div id="fText" class="container">ALowtonQA - Example Front</div>
+    </footer>
+
+    <!--  jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
+        crossorigin="anonymous"></script>
+
+    <!-- Datepicker JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"
+        integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ=="
+        crossorigin="anonymous"></script>
+
+    <!-- AXIOS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+        integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+        crossorigin="anonymous"></script>
+ 
+    <!-- MY JS -->
+    <script src="js/hwa.js"></script>
+
+</body>
+
+</html>
